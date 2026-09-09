@@ -99,7 +99,7 @@ export default function AboutHero() {
         </div>
 
         {/* ── Right-side vertical service list (lg+ only) ────────────────── */}
-        <div className="absolute right-6 top-99 z-20 hidden -translate-y-1/2 flex-col items-end gap-3 sm:right-10 lg:flex lg:right-14">
+        <div className="absolute right-6 top-99 sm:34 z-20 -translate-y-1/2 flex-col items-end gap-3 sm:right-10 lg:flex lg:right-14">
           {services.map((s) => (
             <span
               key={s}

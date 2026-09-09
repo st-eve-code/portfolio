@@ -4,6 +4,7 @@ import AboutHero from "@/components/AboutHero";
 import AboutStatement from "@/components/AboutStatement";
 import SectionHeading from "@/components/SectionHeading";
 import SkillList from "@/components/SkillList";
+import Credentials from "@/components/Credentials";
 import { skills } from "@/data/skills";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function AboutPage() {
       <AboutStatement />
 
       {/* Skills section — image + skill bars side by side */}
-      <div className="mx-auto max-w-5xl px-6 py-20">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-14">
         <SectionHeading
           title="Skills"
           subtitle="A look at the tools and technologies we work with."
@@ -46,6 +47,8 @@ export default function AboutPage() {
 
         </div>
       </div>
+
+      <Credentials />
     </div>
   );
 }

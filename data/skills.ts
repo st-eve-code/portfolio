@@ -15,6 +15,6 @@ export const skills: Skill[] = [
   { name: "Git", category: "tools", level: 85 },
   { name: "Docker", category: "tools", level: 60 },
   { name: "Figma", category: "tools", level: 65 },
-  { name: "Figma", category: "tools", level: 65 },
+  { name: "AWS", category: "cloud", level: 65 },
   { name: "Blender", category: "tools", level: 70 },
 ];

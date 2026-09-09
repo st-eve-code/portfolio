@@ -1,89 +1,39 @@
 import type { Metadata } from "next";
-import SectionHeading from "@/components/SectionHeading";
-import { siteConfig } from "@/constants/site";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with me.",
+  description: "Get in touch with MONDE.",
 };
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
-      <SectionHeading
-        title="Get in Touch"
-        subtitle="Have a project in mind or just want to say hi? I'd love to hear from you."
-      />
+    <div className="min-h-screen bg-white text-zinc-900 dark:bg-[#0a0a0a] dark:text-zinc-100">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
 
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div>
-          <p className="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            I&apos;m always open to discussing new projects, creative ideas, or
-            opportunities to be part of your vision. Send me an email and I&apos;ll
-            get back to you as soon as I can.
-          </p>
-          <div className="mt-6 space-y-3">
-            <a
-              className="block text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-50"
-              href={`mailto:${siteConfig.email}`}
+        <div className="grid items-start gap-16 py-16 pb-24 lg:grid-cols-[1fr_1.6fr]">
+
+          {/* Left — header text */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+              Let&apos;s work together
+            </p>
+            <h1
+              className="mt-2 font-black uppercase leading-none tracking-tighter text-zinc-900 dark:text-zinc-50"
+              style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}
             >
-              {siteConfig.email}
-            </a>
-            <a
-              className="block text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
-              href={siteConfig.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              className="block text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
-              href={siteConfig.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
+              GET IN<br />TOUCH
+            </h1>
+            <p className="mt-6 text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+              Have a project in mind, want to collaborate, or just want to say
+              hello? Send a message and we&apos;ll get back to you as soon as possible.
+            </p>
           </div>
+
+          {/* Right — form, aligned to top of left column */}
+          <ContactForm />
         </div>
 
-        <form className="flex flex-col gap-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <input
-              className="rounded-lg border border-zinc-300 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:border-zinc-700 dark:text-zinc-50"
-              type="text"
-              name="name"
-              placeholder="Your name"
-              required
-            />
-            <input
-              className="rounded-lg border border-zinc-300 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:border-zinc-700 dark:text-zinc-50"
-              type="email"
-              name="email"
-              placeholder="Your email"
-              required
-            />
-          </div>
-          <input
-            className="rounded-lg border border-zinc-300 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:border-zinc-700 dark:text-zinc-50"
-            type="text"
-            name="subject"
-            placeholder="Subject"
-          />
-          <textarea
-            className="min-h-40 rounded-lg border border-zinc-300 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:border-zinc-700 dark:text-zinc-50"
-            name="message"
-            placeholder="Your message"
-            required
-          />
-          <button
-            className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
-            type="submit"
-          >
-            Send Message
-          </button>
-        </form>
       </div>
     </div>
   );

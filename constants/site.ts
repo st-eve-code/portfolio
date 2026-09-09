@@ -15,9 +15,9 @@ export const siteConfig = {
     pinterest: "https://pinterest.com",
   },
   navItems: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Skills", href: "/skills" },
+    { label: "Home",     href: "/" },
+    { label: "About",    href: "/about" },
+    { label: "Projects", href: "/projects" },
     { label: "Contacts", href: "/contact" },
   ],
 } as const;

@@ -35,3 +35,11 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;             /* Chrome/Safari */
 }
+
+/* Make form elements inherit the page font instead of falling back to system font */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}

@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Certificate } from "@/data/credentials";
 
+// ── Replace this with your actual Google Drive / Cloud folder URL ──────────
+const CERTIFICATES_CLOUD_URL = "https://drive.google.com/drive/folders/your-folder-id";
+
 type Props = {
   certificates: Certificate[];
   initialCount?: number;
@@ -18,13 +21,13 @@ export default function CertificateGrid({ certificates, initialCount = 6 }: Prop
 
   return (
     <div>
+      {/* Certificate image cards — no overlay text */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {visible.map((cert) => (
           <div
             key={cert.id}
             className="group relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900"
           >
-            {/* Certificate image */}
             <div className="relative aspect-[4/3] w-full">
               <Image
                 src={cert.image}
@@ -34,34 +37,11 @@ export default function CertificateGrid({ certificates, initialCount = 6 }: Prop
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-
-            {/* Overlay */}
-            <div className="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-black/80 via-black/30 to-transparent p-4">
-              <p className="text-xs font-bold leading-snug text-white">
-                {cert.title}
-              </p>
-              <p className="mt-0.5 text-[10px] text-white/60">
-                {cert.issuer} · {cert.year}
-              </p>
-              {cert.href && (
-                <Link
-                  href={cert.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-white/70 transition-colors hover:text-white"
-                >
-                  View
-                  <svg className="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </Link>
-              )}
-            </div>
           </div>
         ))}
       </div>
 
-      {/* Show more / less button — only renders if there are more than initialCount */}
+      {/* Show more / less */}
       {hasMore && (
         <button
           onClick={() => setExpanded((prev) => !prev)}
@@ -84,6 +64,19 @@ export default function CertificateGrid({ certificates, initialCount = 6 }: Prop
           </svg>
         </button>
       )}
+
+      {/* View all — links to Google Cloud/Drive */}
+      <Link
+        href={CERTIFICATES_CLOUD_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-6 inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all duration-200 hover:bg-zinc-800 hover:scale-105 active:scale-95 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
+      >
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+        </svg>
+        View All Certificates
+      </Link>
     </div>
   );
 }

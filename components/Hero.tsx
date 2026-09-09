@@ -29,7 +29,7 @@ export default function Hero() {
 
           {/* Top Right: Editorial Statement & CTA Button */}
           <div className="flex flex-col items-end text-right">
-            <p className="sm:block max-w-50 sm:max-w-60 text-xs sm:text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+            <p className="max-w-32 sm:max-w-60 text-[10px] sm:text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
               From everyday essentials to statement pieces, our fashion is crafted to inspire confidence and individuality.
             </p>
             <Link

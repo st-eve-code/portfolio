@@ -47,12 +47,16 @@ export default function GallerySection() {
 
   return (
     <section
-      className="w-full overflow-hidden bg-zinc-950 text-white"
-      style={{
-        /* Slanted top edge: flat on the left, angled down ~80px on the right */
-        clipPath: "polygon(0 80px, 100% 0, 100% 100%, 0 100%)",
-      }}
+      className="monde-gallery w-full overflow-hidden bg-zinc-950 text-white"
     >
+      {/* Slanted top only on sm+ — on mobile both sections are dark so no edge needed */}
+      <style>{`
+        @media (min-width: 640px) {
+          .monde-gallery {
+            clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
+          }
+        }
+      `}</style>
       {/* ── Top text block ─────────────────────────────────────────────── */}
       {/* pt is increased to compensate for the clip eating into the top */}
       <div className="mx-auto max-w-7xl px-6 pt-16 md:pt-36 pb-14 sm:px-10 lg:px-14">

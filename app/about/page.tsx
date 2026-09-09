@@ -1,45 +1,51 @@
 import type { Metadata } from "next";
-import SkillBar from "@/components/SkillBar";
+import Image from "next/image";
+import AboutHero from "@/components/AboutHero";
+import AboutStatement from "@/components/AboutStatement";
 import SectionHeading from "@/components/SectionHeading";
+import SkillList from "@/components/SkillList";
 import { skills } from "@/data/skills";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn more about me and the skills I bring to the table.",
+  description: "Learn more about MONDE and the brand behind the fashion.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
-      <section>
+    <div>
+      <AboutHero />
+      <AboutStatement />
+
+      {/* Skills section — image + skill bars side by side */}
+      <div className="mx-auto max-w-5xl px-6 py-20">
         <SectionHeading
-          title="About Me"
-          subtitle="A bit about who I am and what I do."
+          title="Skills"
+          subtitle="A look at the tools and technologies we work with."
         />
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div className="space-y-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            <p>
-              I&apos;m a developer who loves turning complex problems into
-              simple, elegant solutions. I focus on building products that are
-              fast, accessible, and a pleasure to use.
-            </p>
-            <p>
-              When I&apos;m not writing code, you&apos;ll find me exploring new
-              technologies, contributing to open source, or learning something
-              new.
-            </p>
+
+        <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+
+          {/* Left — editorial image */}
+          <div className="relative w-full shrink-0 overflow-hidden rounded-2xl lg:w-72 xl:w-80">
+            <div className="relative aspect-[3/4] w-full">
+              <Image
+                src="/images/about/skills-photo.jpg"
+                alt="MONDE editorial"
+                fill
+                sizes="(max-width: 1024px) 100vw, 320px"
+                className="object-cover object-top"
+              />
+            </div>
           </div>
 
-          <div className="space-y-5">
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-              Skills
-            </h3>
-            {skills.map((skill) => (
-              <SkillBar key={skill.name} skill={skill} />
-            ))}
+          {/* Right — skill bars with expand/collapse */}
+          <div className="flex-1">
+            <SkillList skills={skills} initialCount={7} />
           </div>
+
         </div>
-      </section>
+      </div>
     </div>
   );
 }

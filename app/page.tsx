@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import BrandStatement from "@/components/BrandStatement";
 import GallerySection from "@/components/GallerySection";
+import LetsTalk from "@/components/LetsTalk";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <BrandStatement />
       <GallerySection />
+      <LetsTalk />
     </div>
   );
 }
